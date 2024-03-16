@@ -45,3 +45,12 @@ Customer {
 ## Nice to do:
 - Blazor Web.
 - Docker-compose project that loads database service automatically which `docker-compose up`
+
+
+## How to
+
+### Migrations
+to create migration use this command
+```bash
+dotnet ef migrations add <NAME> --project src/Infrastructure --startup-project src/Presentation.Api --output-dir Persistence/Migrations
+```

@@ -5,7 +5,7 @@ using Presentation.Api;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-builder.Services.AddPresentation(configuration).AddApplication().AddInfrastructure();
+builder.Services.AddInfrastructure(configuration).AddApplication().AddPresentation(configuration);
 
 var app = builder.Build();
 
