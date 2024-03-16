@@ -12,7 +12,6 @@ public static class DependencyInjection
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-
         services.AddSwaggerGen(
             options =>
             {
@@ -22,17 +21,6 @@ public static class DependencyInjection
                     path2: assemblyName + ".xml"
                 );
                 options.IncludeXmlComments(filePath);
-
-                options.AddSecurityDefinition(
-                    name: "Bearer",
-                    securityScheme: new OpenApiSecurityScheme
-                    {
-                        In = ParameterLocation.Header,
-                        Description = "Please enter the token into the field",
-                        Name = "Authorization",
-                        Type = SecuritySchemeType.ApiKey
-                    }
-                );
             }
         );
 
