@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infrastructure.Persistence.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -18,6 +19,10 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.Property(t => t.BankAccountNumber);
         builder.Property(t => t.DateOfBirth).IsRequired();
 
-        builder.Property(t => t.PhoneNumber).IsRequired().HasColumnType("bigint");
+        builder
+            .Property(t => t.PhoneNumber)
+            .IsRequired()
+            .HasConversion(new PhoneNumberConverter())
+            .HasColumnType("bigint");
     }
 }

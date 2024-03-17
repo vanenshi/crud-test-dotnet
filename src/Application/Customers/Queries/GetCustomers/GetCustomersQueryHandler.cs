@@ -1,3 +1,4 @@
+using Application.Common;
 using Application.Common.Interfaces.Persistence;
 using Application.Customers.Common;
 using Domain.Entities;
@@ -31,7 +32,11 @@ public class GetCustomersQueryHandler : IRequestHandler<GetCustomersQuery, IList
             {
                 Id = customer.Id,
                 FirstName = customer.FirstName,
-                LastName = customer.LastName
+                LastName = customer.LastName,
+                DateOfBirth = customer.DateOfBirth,
+                PhoneNumber = customer.PhoneNumber, 
+                BankAccountNumber = customer.BankAccountNumber,
+                Email = customer.Email
             })
             .ToList();
     }

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Common;
 
 namespace Domain.Entities;
@@ -12,7 +13,7 @@ public class Customer : BaseEntity<Guid>
 
     public string? BankAccountNumber { get; set; }
 
-    public ulong PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; } = null!;
 
     public string Email { get; set; } = null!;
 }

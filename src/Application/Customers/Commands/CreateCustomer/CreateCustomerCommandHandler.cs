@@ -1,4 +1,6 @@
+using Application.Common;
 using Application.Common.Interfaces.Persistence;
+using Application.Common.Validators;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
@@ -10,7 +12,7 @@ public class CreateCustomerCommand : IRequest<Guid>
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public DateTimeOffset DateOfBirth { get; set; }
-    public ulong PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; } = null!;
     public string? BankAccountNumber { get; set; }
     public string Email { get; set; } = null!;
 }
@@ -22,8 +24,7 @@ public class CreateMovieCommandValidator : AbstractValidator<CreateCustomerComma
         RuleFor(x => x.FirstName).NotNull().NotEmpty().MinimumLength(3).MaximumLength(100);
         RuleFor(x => x.LastName).NotNull().NotEmpty().MinimumLength(3).MaximumLength(100);
         RuleFor(x => x.DateOfBirth).LessThan(DateTimeOffset.Now);
-        RuleFor(x => x.PhoneNumber);
-        RuleFor(x => x.BankAccountNumber);
+        RuleFor(x => x.PhoneNumber).PhoneNumber();
         RuleFor(x => x.Email).EmailAddress();
     }
 }

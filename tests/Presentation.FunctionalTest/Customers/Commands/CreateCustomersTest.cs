@@ -43,7 +43,7 @@ public class CreateCustomersTest : IClassFixture<CustomWebApplicationFactory>, I
             Email = "email@gmail.com",
             FirstName = "First",
             LastName = "Last",
-            PhoneNumber = 9032338887,
+            PhoneNumber = "+989000000000",
             DateOfBirth = DateTimeOffset.UtcNow
         };
 
