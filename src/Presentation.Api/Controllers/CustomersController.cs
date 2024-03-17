@@ -1,6 +1,7 @@
 using System.Net;
 using Application.Customers.Commands.CreateCustomer;
 using Application.Customers.Common;
+using Application.Customers.Queries.GetCustomer;
 using Application.Customers.Queries.GetCustomers;
 using Application.Exceptions;
 using MediatR;
@@ -23,8 +24,8 @@ public class CustomersController : ApiControllerBase
     [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult<IList<CustomerResponse>>> GetCustomers()
     {
-        var command = new GetCustomersQuery();
-        var customers = await _mediator.Send(command);
+        var query = new GetCustomersQuery();
+        var customers = await _mediator.Send(query);
         return Ok(customers);
     }
 
@@ -42,7 +43,9 @@ public class CustomersController : ApiControllerBase
     [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult> GetCustomer(Guid customerId)
     {
-        return Ok();
+        var query = new GetCustomerQuery(customerId);
+        var customer = await _mediator.Send(query);
+        return Ok(customer);
     }
 
     [HttpDelete("{customerId:guid}")]
