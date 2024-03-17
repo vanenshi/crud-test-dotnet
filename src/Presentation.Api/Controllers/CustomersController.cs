@@ -1,5 +1,6 @@
 using System.Net;
 using Application.Customers.Commands.CreateCustomer;
+using Application.Customers.Commands.DeleteCustomer;
 using Application.Customers.Common;
 using Application.Customers.Queries.GetCustomer;
 using Application.Customers.Queries.GetCustomers;
@@ -30,12 +31,12 @@ public class CustomersController : ApiControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult<CustomerResponse>> CreateCustomer(CreateCustomerCommand command)
     {
         await _mediator.Send(command);
-        return Created();
+        return Ok();
     }
 
     [HttpGet("{customerId:guid}")]
@@ -53,6 +54,8 @@ public class CustomersController : ApiControllerBase
     [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult> DeleteCustomer(Guid customerId)
     {
+        var command = new DeleteCustomerCommand(customerId);
+        await _mediator.Send(command);
         return Ok();
     }
 

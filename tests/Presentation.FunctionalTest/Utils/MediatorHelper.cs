@@ -18,4 +18,11 @@ public class MediatorHelper
         var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
         return await mediator.Send(request);
     }
+
+    public async Task SendAsync(IBaseRequest request)
+    {
+        using var scope = _scopeFactory.CreateScope();
+        var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+        await mediator.Send(request);
+    }
 }
