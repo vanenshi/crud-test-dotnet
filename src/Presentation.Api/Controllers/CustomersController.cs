@@ -1,6 +1,7 @@
 using System.Net;
 using Application.Customers.Commands.CreateCustomer;
 using Application.Customers.Commands.DeleteCustomer;
+using Application.Customers.Commands.UpdateCustomer;
 using Application.Customers.Common;
 using Application.Customers.Queries.GetCustomer;
 using Application.Customers.Queries.GetCustomers;
@@ -62,8 +63,9 @@ public class CustomersController : ApiControllerBase
     [HttpPut("{customerId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesErrorResponseType(typeof(ApiException))]
-    public async Task<ActionResult> UpdateCustomer(Guid customerId)
+    public async Task<ActionResult> UpdateCustomer(UpdateCustomerCommand updateCustomerCommand)
     {
+        await _mediator.Send(updateCustomerCommand);
         return Ok();
     }
 }

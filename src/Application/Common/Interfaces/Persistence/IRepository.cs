@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Domain.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Common.Interfaces.Persistence;
 

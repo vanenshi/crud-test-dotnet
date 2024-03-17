@@ -96,7 +96,7 @@ public class Repository<TEntity> : IRepository<TEntity>
             await _dbContext.SaveChangesAsync(cancellationToken);
     }
     #endregion
-
+    #region Find
     public async Task<TEntity?> FindAsync(
         object?[]? keyValues,
         CancellationToken cancellationToken = default
@@ -107,4 +107,5 @@ public class Repository<TEntity> : IRepository<TEntity>
             cancellationToken: cancellationToken
         );
     }
+    #endregion
 }
