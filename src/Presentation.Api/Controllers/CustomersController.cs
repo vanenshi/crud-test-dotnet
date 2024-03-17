@@ -1,6 +1,8 @@
+using System.Net;
 using Application.Customers.Commands.CreateCustomer;
 using Application.Customers.Common;
 using Application.Customers.Queries.GetCustomers;
+using Application.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +20,7 @@ public class CustomersController : ApiControllerBase
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult<IList<CustomerResponse>>> GetCustomers()
     {
         var command = new GetCustomersQuery();
@@ -27,6 +30,7 @@ public class CustomersController : ApiControllerBase
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult<CustomerResponse>> CreateCustomer(CreateCustomerCommand command)
     {
         await _mediator.Send(command);
@@ -35,6 +39,7 @@ public class CustomersController : ApiControllerBase
 
     [HttpGet("{customerId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult> GetCustomer(Guid customerId)
     {
         return Ok();
@@ -42,6 +47,7 @@ public class CustomersController : ApiControllerBase
 
     [HttpDelete("{customerId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult> DeleteCustomer(Guid customerId)
     {
         return Ok();
@@ -49,6 +55,7 @@ public class CustomersController : ApiControllerBase
 
     [HttpPut("{customerId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesErrorResponseType(typeof(ApiException))]
     public async Task<ActionResult> UpdateCustomer(Guid customerId)
     {
         return Ok();

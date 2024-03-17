@@ -1,5 +1,6 @@
 using Application.Common.Interfaces.Persistence;
 using Infrastructure.Persistence;
+using Infrastructure.Persistence.Common;
 using Infrastructure.Persistence.Interceptors;
 using Infrastructure.Persistence.Repositories.Common;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ public static class DependencyInjection
             }
         );
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        services.AddScoped<ITransactionManager, TransactionManager>();
 
         services.AddScoped(
             serviceType: typeof(IRepository<>),
