@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication;
+using Presentation.Api.Middleware;
 
 namespace Presentation.Api;
 
@@ -9,6 +9,7 @@ public static class RequestPipeline
         IConfiguration configuration
     )
     {
+        app.UseMiddleware<ErrorHandlingMiddleware>();
         return app;
     }
 }

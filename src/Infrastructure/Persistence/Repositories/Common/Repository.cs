@@ -73,7 +73,6 @@ public class Repository<TEntity> : IRepository<TEntity>
             await _dbContext.SaveChangesAsync(cancellationToken);
     }
     #endregion
-
     #region Update
     public async Task UpdateAsync(
         TEntity entity,
@@ -97,4 +96,15 @@ public class Repository<TEntity> : IRepository<TEntity>
             await _dbContext.SaveChangesAsync(cancellationToken);
     }
     #endregion
+
+    public async Task<TEntity?> FindAsync(
+        object?[]? keyValues,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return await _dbContext.FindAsync<TEntity>(
+            keyValues: keyValues,
+            cancellationToken: cancellationToken
+        );
+    }
 }

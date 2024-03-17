@@ -1,3 +1,4 @@
+using Application.Customers.Commands.CreateCustomer;
 using Application.Customers.Common;
 using Application.Customers.Queries.GetCustomers;
 using MediatR;
@@ -26,11 +27,11 @@ public class CustomersController : ApiControllerBase
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<ActionResult> CreateCustomer()
+    public async Task<ActionResult<CustomerResponse>> CreateCustomer(CreateCustomerCommand command)
     {
+        await _mediator.Send(command);
         return Created();
     }
-
 
     [HttpGet("{customerId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]

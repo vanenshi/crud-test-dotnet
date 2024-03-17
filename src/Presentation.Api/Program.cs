@@ -19,3 +19,5 @@ app.UsePresentation(configuration);
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -9,6 +9,10 @@ public interface IRepository<TEntity>
     IQueryable<TEntity> Query { get; }
     IQueryable<TEntity> NoTrackingQuery { get; }
 
+    // Find ----------------------------------------
+
+    Task<TEntity?> FindAsync(object?[]? keyValues, CancellationToken cancellationToken = default);
+
     // Add -----------------------------------------
 
     Task AddAsync(
