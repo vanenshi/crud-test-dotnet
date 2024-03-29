@@ -18,4 +18,19 @@ public static class PhoneNumberUtil
             return false;
         }
     }
+
+    public static bool IsMobileNumber(string value)
+    {
+        var phoneUtil = GooglePhoneNumberUtil.GetInstance();
+        try
+        {
+            var phoneNumber = phoneUtil.Parse(value, null);
+            var numberType = phoneUtil.GetNumberType(phoneNumber);
+            return numberType == PhoneNumberType.MOBILE;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
 }

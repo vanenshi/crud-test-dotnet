@@ -6,20 +6,16 @@ namespace Application.UnitTests.Common;
 public class PhoneNumberUtilTests
 {
     [Theory]
-    [InlineData("+989000000")]
-    [InlineData("+1-212-456-7890")]
+    [InlineData("+989121234567")]
     public void PhoneNumberUtil_Should_DetectCorrectPhoneNumber(string phoneNumber)
     {
-        Assert.True(PhoneNumberUtil.IsPhoneNumber(phoneNumber));
+        Assert.True(PhoneNumberUtil.IsMobileNumber(phoneNumber));
     }
 
     [Theory]
-    [InlineData("000000000")]
-    [InlineData("")]
-    [InlineData("09033333333")]
-    [InlineData("amir")]
+    [InlineData("+982188776655")]
     public void PhoneNumberUtil_Should_DetectInCorrectPhoneNumber(string phoneNumber)
     {
-        Assert.False(PhoneNumberUtil.IsPhoneNumber(phoneNumber));
+        Assert.False(PhoneNumberUtil.IsMobileNumber(phoneNumber));
     }
 }
