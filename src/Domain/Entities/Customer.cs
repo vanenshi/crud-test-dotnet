@@ -9,9 +9,9 @@ public class Customer : BaseEntity<Guid>
 
     public string LastName { get; set; } = null!;
 
-    public DateTimeOffset DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
 
-    public string? BankAccountNumber { get; set; }
+    public string BankAccountNumber { get; set; } = null!;
 
     public string PhoneNumber { get; set; } = null!;
 

@@ -17,6 +17,7 @@ public class PhoneNumberUtilTests
     [InlineData("000000000")]
     [InlineData("")]
     [InlineData("09033333333")]
+    [InlineData("09033333333")]
     [InlineData("amir")]
     public void PhoneNumberUtil_Should_DetectInCorrectPhoneNumber(string phoneNumber)
     {
