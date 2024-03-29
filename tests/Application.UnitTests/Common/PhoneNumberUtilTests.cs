@@ -10,7 +10,7 @@ public class PhoneNumberUtilTests
     [InlineData("+1-212-456-7890")]
     public void PhoneNumberUtil_Should_DetectCorrectPhoneNumber(string phoneNumber)
     {
-        Assert.True(PhoneNumberUtil.IsPhoneNumber(phoneNumber));
+        Assert.True(MobileNumberValidator.IsPhoneNumber(phoneNumber));
     }
 
     [Theory]
@@ -20,6 +20,6 @@ public class PhoneNumberUtilTests
     [InlineData("amir")]
     public void PhoneNumberUtil_Should_DetectInCorrectPhoneNumber(string phoneNumber)
     {
-        Assert.False(PhoneNumberUtil.IsPhoneNumber(phoneNumber));
+        Assert.False(MobileNumberValidator.IsPhoneNumber(phoneNumber));
     }
 }

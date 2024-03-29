@@ -8,7 +8,7 @@ public class PhoneNumber<T> : PropertyValidator<T, string>
 {
     public override bool IsValid(ValidationContext<T> context, string value)
     {
-        return PhoneNumberUtil.IsPhoneNumber(value);
+        return MobileNumberValidator.IsPhoneNumber(value);
     }
 
     public override string Name => "PhoneNumberValidator";
